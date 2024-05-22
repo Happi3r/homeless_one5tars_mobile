@@ -1,6 +1,11 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_naver_login/flutter_naver_login.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
+
+enum LoginException {
+  canceled;
+}
 
 abstract class LoginService {
   static const naver = NaverLoginService();
@@ -64,11 +69,37 @@ class KakaoLoginService extends LoginService {
   @override
   Future<String?> login() async {
     try {
-      OAuthToken token = await UserApi.instance.loginWithKakaoTalk();
+      OAuthToken token = await isKakaoTalkInstalled()
+          ? await _loginWithKakaoTalk()
+          : await _loginWithKakaoAccount();
       return token.accessToken;
+    } on LoginException {
+      print('Kakao Login Canceled');
+      return null;
     } catch (e) {
       print('Error :: Kakao.login failed $e');
       return null;
+    }
+  }
+
+  Future<OAuthToken> _loginWithKakaoTalk() async {
+    try {
+      return await UserApi.instance.loginWithKakaoTalk();
+    } on PlatformException catch (e) {
+      if (e.code == 'CANCELED') {
+        throw LoginException.canceled;
+      }
+      return _loginWithKakaoAccount();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<OAuthToken> _loginWithKakaoAccount() async {
+    try {
+      return await UserApi.instance.loginWithKakaoTalk();
+    } catch (e) {
+      rethrow;
     }
   }
 

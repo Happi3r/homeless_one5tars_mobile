@@ -28,7 +28,10 @@ class _LoginViewState extends State<LoginView> {
               ),
             ),
             ElevatedButton(
-              onPressed: LoginService.kakao.login,
+              onPressed: () async {
+                final res = await LoginService.kakao.login();
+                print(res ?? 'kakao login error');
+              },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
               child: const Text(
                 'Login with Kakao',

@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:homeless/screens/login.dart';
+import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load();
+
+  KakaoSdk.init(
+    nativeAppKey: dotenv.get('KAKAO_APP_API_KEY'),
+  );
+
   runApp(const MyApp());
 }
 
