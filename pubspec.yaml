@@ -62,6 +62,35 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  fonts:
+    - family: Black
+      fonts:
+        - asset: assets/fonts/Pretendard-Black.otf
+    - family: Bold
+      fonts:
+        - asset: assets/fonts/Pretendard-Bold.otf
+    - family: SemiBold
+      fonts:
+        - asset: assets/fonts/Pretendard-SemiBold.otf
+    - family: ExtraBold
+      fonts:
+        - asset: assets/fonts/Pretendard-ExtraBold.otf
+    - family: Medium
+      fonts:
+        - asset: assets/fonts/Pretendard-Medium.otf
+    - family: Light
+      fonts:
+        - asset: assets/fonts/Pretendard-Light.otf
+    - family: Regular
+      fonts:
+        - asset: assets/fonts/Pretendard-Regular.otf
+    - family: Thin
+      fonts:
+        - asset: assets/fonts/Pretendard-Thin.otf
+    - family: ExtraLight
+      fonts:
+        - asset: assets/fonts/Pretendard-ExtraLight.otf
+
   # To add assets to your application, add an assets section, like this:
   assets:
     - .env
