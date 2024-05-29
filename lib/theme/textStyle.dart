@@ -50,7 +50,7 @@ class HomelessTextTheme {
         outline: HomelessColor.line,
         tertiary: HomelessColor.success,
         onTertiary: HomelessColor.onSuccess,
-        secondary: HomelessColor.secondary
+        secondary: HomelessColor.darkSecondary
     ),
   );
 }

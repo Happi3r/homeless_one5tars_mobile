@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:homeless/screens/login.dart';
+import 'package:homeless/screens/signIn/InputUsage.dart';
+import 'package:homeless/theme/textStyle.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -21,11 +23,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const LoginView(),
+      theme: HomelessTextTheme.lightTheme,
+      darkTheme: HomelessTextTheme.darkTheme,
+      home: const InputUsagePage(),
     );
   }
 }

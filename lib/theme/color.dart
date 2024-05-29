@@ -10,5 +10,6 @@ class HomelessColor {
   static const Color darkText = Color(0xFF464646);
   static const Color background = Color(0xFFFFFFFF);
   static const Color darkBackground = Color(0xFF2B2B2B);
-  static const Color secondary = Color(0xFFAAAAAA);
+  static const Color secondary = Color(0xFF777777);
+  static const Color darkSecondary = Color(0xFFAAAAAA);
 }
