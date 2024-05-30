@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:homeless/theme/color.dart';
 import 'package:homeless/theme/textStyle.dart';
-import 'package:homeless/view/ContentTopSpacer.dart';
 
-import '../../view/GenericScaffold.dart';
+import '../../widgets/GenericScaffold.dart';
+import 'facilityInfo.dart';
 
 class InputUsagePage extends StatefulWidget {
   const InputUsagePage({super.key});
@@ -18,9 +18,17 @@ class _InputUsagePageState extends State<InputUsagePage> {
   @override
   Widget build(BuildContext context) {
     return GenericScaffold(
-      appBarTitle:  "사용 목적",
+      appBarTitle: "사용 목적",
+      mainContent: "사용 목적 정보를 입력하고\n아래 확인 다음 버튼을 눌러주세요.",
       appBarLeading: () {},
-      okButtonAction: () {},
+      okButtonAction: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => FacilityInfoPage(),
+          ),
+        );
+      },
       content: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: UserRule.values.map((e) {
