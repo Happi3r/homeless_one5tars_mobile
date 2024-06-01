@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import 'color.dart';
@@ -25,9 +23,10 @@ class HomelessTextTheme {
   static ThemeData lightTheme = ThemeData(
       textTheme: HomelessTextTheme.theme,
       colorScheme: ColorScheme.fromSeed(
-        seedColor: const Color(0xffCADBB7),
+        seedColor: const Color(0xffffffff),
         brightness: Brightness.light,
         onPrimary: HomelessColor.text,
+        onSecondary: const Color(0xff000000),
         primary: HomelessColor.background,
         onError: HomelessColor.onError,
         error: HomelessColor.error,
@@ -41,10 +40,11 @@ class HomelessTextTheme {
   static ThemeData darkTheme = ThemeData(
     textTheme: HomelessTextTheme.theme,
     colorScheme: ColorScheme.fromSeed(
-        seedColor: const Color(0xffCADBB7),
+        seedColor: const Color(0xff000000),
         brightness: Brightness.dark,
         onPrimary: HomelessColor.darkText,
         primary: HomelessColor.darkBackground,
+        onSecondary: const Color(0xffffffff),
         onError: HomelessColor.onError,
         error: HomelessColor.error,
         outline: HomelessColor.line,

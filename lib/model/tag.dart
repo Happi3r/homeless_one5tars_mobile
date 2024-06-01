@@ -1,8 +1,8 @@
 import 'json.dart';
 
 class TagModel {
-  final String? id;
-  final String? name;
+  final String id;
+  final String name;
   final String? image;
 
   const TagModel({

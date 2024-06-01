@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:homeless/screens/login.dart';
 import 'package:homeless/screens/signIn/InputUsage.dart';
 import 'package:homeless/theme/textStyle.dart';
@@ -12,6 +13,7 @@ void main() async {
   KakaoSdk.init(
     nativeAppKey: dotenv.get('KAKAO_APP_API_KEY'),
   );
+  await NaverMapSdk.instance.initialize(clientId: dotenv.get('NAVER_APP_API_KEY'));
 
   runApp(const MyApp());
 }

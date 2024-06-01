@@ -20,6 +20,8 @@ class _InputUsagePageState extends State<InputUsagePage> {
     return GenericScaffold(
       appBarTitle: "사용 목적",
       mainContent: "사용 목적 정보를 입력하고\n아래 확인 다음 버튼을 눌러주세요.",
+      contentSubTitle: "사용 목적",
+      contentSubTitleOnAsterisk: true,
       appBarLeading: () {},
       okButtonAction: () {
         Navigator.push(

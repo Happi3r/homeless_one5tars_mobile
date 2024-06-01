@@ -3,8 +3,8 @@ import 'dart:ffi';
 import 'json.dart';
 
 class CoOpModel {
-  final String? name;
-  final String? location;
+  final String name;
+  final String location;
   final RealLocationModel? realLocation;
   final String? description;
   final String? phone;

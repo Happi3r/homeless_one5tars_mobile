@@ -3,24 +3,23 @@ import 'dart:core';
 import 'json.dart';
 
 class WorkPostModel {
-  final String? id;
-  final String? title;
-  final String? state;
-  final String? webView;
-  final DateTime? addDate;
+  final String id;
+  final String title;
+  final String state;
+  final String webView;
+  final DateTime addDate;
   final String? companyName;
-  final String? recruitment;
   final String? companyLocation;
   final String? companyJobType;
-  final String? findJobType;
-  final String? personnel;
-  final String? pay;
-  final String? workingHours;
+  final String findJobType;
+  final String personnel;
+  final String pay;
+  final String workingHours;
   final String? welfare;
-  final String? workingLocation;
+  final String workingLocation;
   final DateTime? endDate;
   final String? endDateString;
-  final String? otherInfo;
+  final String otherInfo;
 
   const WorkPostModel({
     required this.id,
@@ -29,7 +28,6 @@ class WorkPostModel {
     required this.webView,
     required this.addDate,
     required this.companyName,
-    required this.recruitment,
     required this.companyLocation,
     required this.companyJobType,
     required this.findJobType,
@@ -51,7 +49,6 @@ class WorkPostModel {
       webView: json['webView'],
       addDate: json['addDate'],
       companyName: json['companyName'],
-      recruitment: json['recruitment'],
       companyLocation: json['companyLocation'],
       companyJobType: json['companyJobType'],
       findJobType: json['findJobType'],
@@ -74,7 +71,6 @@ class WorkPostModel {
       "webView": "$webView",
       "addDate": "$addDate",
       "companyName": "$companyName",
-      "recruitment": "$recruitment",
       "companyLocation": "$companyLocation",
       "companyJobType": "$companyJobType",
       "findJobType": "$findJobType",
