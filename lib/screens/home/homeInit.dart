@@ -4,9 +4,8 @@ import 'package:homeless/screens/home/noti.dart';
 import 'package:homeless/screens/home/profile.dart';
 import 'package:homeless/theme/spacing.dart';
 import 'package:homeless/theme/textStyle.dart';
-import 'package:homeless/theme/textStyle.dart';
-import 'package:homeless/theme/textStyle.dart';
-import 'package:homeless/theme/textStyle.dart';
+import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
+    as bg;
 
 import 'home.dart';
 
@@ -27,6 +26,25 @@ class _HomeInitPageState extends State<HomeInitPage> {
   ];
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    bg.BackgroundGeolocation.ready(
+      bg.Config(
+          desiredAccuracy: bg.Config.DESIRED_ACCURACY_HIGH,
+          distanceFilter: 10.0,
+          stopOnTerminate: false,
+          startOnBoot: true,
+          debug: true,
+          logLevel: bg.Config.LOG_LEVEL_VERBOSE),
+    ).then((bg.State state) {
+      if (!state.enabled) {
+        bg.BackgroundGeolocation.start();
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Scaffold(
@@ -34,7 +52,11 @@ class _HomeInitPageState extends State<HomeInitPage> {
       appBar: AppBar(
         leading: Container(),
         leadingWidth: 0,
-        title: Text('Homeless', style: HomelessTextTheme.xxl.copyWith(color: theme.colorScheme.onPrimary),),
+        title: Text(
+          'Homeless',
+          style: HomelessTextTheme.xxl
+              .copyWith(color: theme.colorScheme.onPrimary),
+        ),
         centerTitle: false,
       ),
       body: SafeArea(
@@ -66,7 +88,8 @@ class _HomeInitPageState extends State<HomeInitPage> {
           })
         },
         selectedItemColor: theme.colorScheme.onSecondary,
-        selectedLabelStyle: HomelessTextTheme.xxs.copyWith(fontFamily: "SemiBold"),
+        selectedLabelStyle:
+            HomelessTextTheme.xxs.copyWith(fontFamily: "SemiBold"),
         type: BottomNavigationBarType.fixed,
         showUnselectedLabels: true,
         unselectedLabelStyle: HomelessTextTheme.xxs,

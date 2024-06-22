@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:homeless/theme/spacing.dart';
 
 import '../theme/textStyle.dart';
 
@@ -15,14 +16,19 @@ class HomelessTextButton extends StatelessWidget {
       {super.key,
       required this.buttonText,
       required this.buttonAction,
-      this.type = ButtonType.Default});
+      this.type = ButtonType.Default,
+      this.width,
+      this.height});
 
   final VoidCallback buttonAction;
+  final double? width;
+  final double? height;
   final String buttonText;
   final ButtonType type;
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final theme = Theme.of(context);
     var textColor = switch (type) {
       ButtonType.Default || ButtonType.Disable => theme.colorScheme.onPrimary,
@@ -36,20 +42,24 @@ class HomelessTextButton extends StatelessWidget {
       ButtonType.Error => theme.colorScheme.error,
       ButtonType.Success => theme.colorScheme.tertiary
     };
-    return TextButton(
-      style: TextButton.styleFrom(
-        backgroundColor: buttonBack,
-        side: BorderSide(color: theme.colorScheme.outline, width: 0.7),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
+    return Container(
+      width: width ?? size.width - 32,
+      height: height ?? size.height,
+      padding: const EdgeInsets.symmetric(horizontal: Spacing.lg),
+      constraints: BoxConstraints(minHeight: height ?? 60),
+      decoration: BoxDecoration(
+        color: buttonBack,
+        border: Border.all(color: theme.colorScheme.outline, width: 0.7),
+        borderRadius: BorderRadius.circular(10),
       ),
-      onPressed: () {
-        buttonAction();
-      },
-      child: Text(
-        buttonText,
-        style: HomelessTextTheme.sm.copyWith(color: textColor),
+      child: InkWell(
+        onTap: buttonAction,
+        child: Center(
+          child: Text(
+            buttonText,
+            style: HomelessTextTheme.sm.copyWith(color: textColor),
+          ),
+        ),
       ),
     );
   }

@@ -5,14 +5,16 @@ class CoOpListModel {
   final String type;
   final String location;
   final String name;
-  final RealLocationModel? realLocation;
+  final double? lat;
+  final double? lng;
   final String phone;
 
   CoOpListModel({
     required this.type,
     required this.name,
     required this.location,
-    required this.realLocation,
+    required this.lat,
+    required this.lng,
     required this.phone,
   });
 
@@ -21,7 +23,8 @@ class CoOpListModel {
       type: json['type'],
       name: json['name'],
       location: json['location'],
-      realLocation: json['realLocation'],
+      lat: json['lat'],
+      lng: json['lng'],
       phone: json['phone'],
     );
   }
@@ -31,7 +34,8 @@ class CoOpListModel {
       "type": type,
       "name": name,
       "location": location,
-      "realLocation": "$realLocation",
+      "lat": "$lat",
+      "lng": "$lng",
       "phone": phone,
     };
   }

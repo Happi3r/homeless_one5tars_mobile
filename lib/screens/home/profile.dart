@@ -10,6 +10,20 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      body: Column(
+        children: [
+          Row(
+            children: [
+              Column(
+                children: [
+
+                ],
+              )
+            ],
+          )
+        ],
+      ),
+    );
   }
 }

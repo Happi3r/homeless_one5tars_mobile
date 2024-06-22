@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:homeless/theme/spacing.dart';
-import 'package:homeless/widgets/Button.dart';
+import 'package:homeless/widgets/button.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 
-import '../screens/signIn/InputUsage.dart';
+import '../screens/signIn/inputUsage.dart';
 import '../theme/color.dart';
 import '../theme/textStyle.dart';
-import 'ContentTopSpacer.dart';
+import 'contentTopSpacer.dart';
 
 class GenericScaffold extends StatelessWidget {
   const GenericScaffold(
@@ -37,9 +37,9 @@ class GenericScaffold extends StatelessWidget {
         title: Text(
           appBarTitle,
           textAlign: TextAlign.start,
-          style: HomelessTextTheme.lg,
+          style: HomelessTextTheme.lg.copyWith(color: theme.colorScheme.onPrimary),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: theme.colorScheme.background,
         elevation: 0.78,
         shadowColor: HomelessColor.text,
         leading: IconButton(
@@ -48,7 +48,7 @@ class GenericScaffold extends StatelessWidget {
             },
             icon: const Icon(Icons.chevron_left)),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: theme.colorScheme.background,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: Spacing.lg),

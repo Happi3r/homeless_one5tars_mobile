@@ -3,7 +3,7 @@ import 'dart:core';
 import 'json.dart';
 
 class WorkPostModel {
-  final String id;
+  final int id;
   final String title;
   final String state;
   final String webView;
@@ -47,7 +47,7 @@ class WorkPostModel {
       title: json['title'],
       state: json['state'],
       webView: json['webView'],
-      addDate: json['addDate'],
+      addDate: DateTime.parse(json['addDate']),
       companyName: json['companyName'],
       companyLocation: json['companyLocation'],
       companyJobType: json['companyJobType'],
@@ -57,7 +57,7 @@ class WorkPostModel {
       workingHours: json['workingHours'],
       welfare: json['welfare'],
       workingLocation: json['workingLocation'],
-      endDate: json['endDate'],
+      endDate: json['endDate'] != null ? DateTime.parse(json['endDate']) : null,
       endDateString: json['endDateString'],
       otherInfo: json['otherInfo'],
     );

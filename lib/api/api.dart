@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:homeless/model/coOp.dart';
+import 'package:homeless/model/work-post.dart';
 import 'package:http/http.dart' as http;
 
 enum HttpMethod {
@@ -13,7 +15,7 @@ typedef JSON = Map<String, dynamic>;
 typedef JSONGen<T> = Map<String, T>;
 
 class Api {
-  static const _domain = "http://220.110.147.50:8726";
+  static const _domain = "http://222.110.147.50:8726";
 
   static Future<http.Response> _request(
       String url, {
@@ -54,5 +56,31 @@ class Api {
     }
   }
 
+  static Future<List<WorkPostModel>> fetchWorkPost() async {
+    final response = await _request("$_domain/work-post");
+    final list = jsonDecode(utf8.decode(response.bodyBytes)) as List;
+    try {
+      if (response.statusCode == 200) {
+        return list.map((e) => WorkPostModel.fromJson(e as JSON)).toList();
+      } else {
+        throw response.statusCode;
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
 
+  static Future<List<CoOpModel>> fetchCoOp() async {
+    final response = await _request("$_domain/coop");
+    final list = jsonDecode(utf8.decode(response.bodyBytes)) as List;
+    try {
+      if (response.statusCode == 200) {
+        return list.map((e) => CoOpModel.fromJson(e as JSON)).toList();
+      } else {
+        throw response.statusCode;
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

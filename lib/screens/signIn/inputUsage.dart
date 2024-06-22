@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:homeless/theme/color.dart';
 import 'package:homeless/theme/textStyle.dart';
 
-import '../../widgets/GenericScaffold.dart';
+import '../../widgets/genericScaffold.dart';
 import 'facilityInfo.dart';
 
 class InputUsagePage extends StatefulWidget {
@@ -22,7 +22,9 @@ class _InputUsagePageState extends State<InputUsagePage> {
       mainContent: "사용 목적 정보를 입력하고\n아래 확인 다음 버튼을 눌러주세요.",
       contentSubTitle: "사용 목적",
       contentSubTitleOnAsterisk: true,
-      appBarLeading: () {},
+      appBarLeading: () {
+        Navigator.pop(context);
+      },
       okButtonAction: () {
         Navigator.push(
           context,

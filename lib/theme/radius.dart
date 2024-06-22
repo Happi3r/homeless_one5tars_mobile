@@ -1,4 +1,4 @@
-class Radius {
+class HomelessRadius {
   static const double xs = 4;
   static const double sm = 8;
   static const double md = 12;

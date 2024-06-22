@@ -1,5 +1,5 @@
 import 'package:homeless/model/tag.dart';
-import 'package:homeless/screens/signIn/InputUsage.dart';
+import 'package:homeless/screens/signIn/inputUsage.dart';
 
 import '../api/api.dart';
 

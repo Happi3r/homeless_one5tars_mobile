@@ -3,8 +3,7 @@ import 'package:homeless/screens/signIn/workInfoSettings.dart';
 
 import '../../model/tag.dart';
 import '../../theme/spacing.dart';
-import '../../view/Tag/GridTagView.dart';
-import '../../widgets/GenericScaffold.dart';
+import '../../widgets/genericScaffold.dart';
 import 'interestsTagSettings.dart';
 
 class FacilityInfoPage extends StatefulWidget {

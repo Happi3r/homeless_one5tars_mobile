@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_naver_map/flutter_naver_map.dart';
-import 'package:homeless/screens/login.dart';
-import 'package:homeless/screens/signIn/InputUsage.dart';
+import 'package:homeless/screens/home/homeInit.dart';
+import 'package:homeless/screens/signIn/workInfoSettings.dart';
 import 'package:homeless/theme/textStyle.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -13,13 +12,24 @@ void main() async {
   KakaoSdk.init(
     nativeAppKey: dotenv.get('KAKAO_APP_API_KEY'),
   );
-  await NaverMapSdk.instance.initialize(clientId: dotenv.get('NAVER_APP_API_KEY'));
 
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +37,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: HomelessTextTheme.lightTheme,
       darkTheme: HomelessTextTheme.darkTheme,
-      home: const InputUsagePage(),
+      home: const WorkInfoSettingsPage(),
     );
   }
 }

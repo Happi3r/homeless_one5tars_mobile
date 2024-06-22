@@ -1,7 +1,9 @@
+import 'dart:ffi';
+
 import 'json.dart';
 
 class TagModel {
-  final String id;
+  final int id;
   final String name;
   final String? image;
 

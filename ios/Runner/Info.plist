@@ -2,6 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>fetch</string>
+	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>위치기반을 통해 외출정보를 조회합니다</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>위치기반을 통해 외출정보를 조회합니다</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>위치기반을 통해 외출정보를 조회합니다</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>GoogleMapKey</key>
+	<string>$(GOOGLE_MAP_KEY)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

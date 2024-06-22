@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:homeless/model/tag.dart';
 import 'package:homeless/screens/home/homeInit.dart';
-import 'package:homeless/screens/home/maps.dart';
 import 'package:homeless/theme/spacing.dart';
 
-import '../../view/Tag/GridTagView.dart';
-import '../../widgets/GenericScaffold.dart';
+import '../../view/tags/GridTagView.dart';
+import '../../widgets/genericScaffold.dart';
 
 class WorkInfoSettingsPage extends StatefulWidget {
   const WorkInfoSettingsPage({super.key});
@@ -41,6 +40,7 @@ class _WorkInfoSettingsPageState extends State<WorkInfoSettingsPage> {
     "제조 단순직",
     "농림어업직"
   ];
+  List<TagModel> selectTags = [];
 
   @override
   Widget build(BuildContext context) {
@@ -57,26 +57,31 @@ class _WorkInfoSettingsPageState extends State<WorkInfoSettingsPage> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => HomeInitPage(),
+            builder: (context) => const HomeInitPage(),
           ),
         );
       },
       content: GridView.builder(
         itemCount: works.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: (maxWidth / GridTagViewWidth).floor(),
-          mainAxisSpacing: Spacing.md,
-          crossAxisSpacing: Spacing.md,
-        ),
+            crossAxisCount: (maxWidth / GridTagViewWidth).floor(),
+            mainAxisSpacing: Spacing.md,
+            crossAxisSpacing: Spacing.md,
+            childAspectRatio: 2.8 / 3),
         itemBuilder: (context, index) {
+          var tagModel = TagModel(
+              id: index, name: works[index], image: "assets/images/img.png");
           return GridTagView(
-            loading: index / 3 == 0,
-            tagModel: TagModel(
-                id: "",
-                name: works[index],
-                image:
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/WebCrawlerArchitecture.svg/1200px-WebCrawlerArchitecture.svg.png"),
-          );
+              onClick: () {
+                if (selectTags.map((e) => e.id).contains(tagModel.id)) {
+                  selectTags.removeWhere((e) => e.id == tagModel.id);
+                } else {
+                  selectTags.add(tagModel);
+                }
+                setState(() {});
+              },
+              highlight: selectTags.map((e) => e.id).contains(tagModel.id),
+              tagModel: tagModel);
         },
       ),
     );

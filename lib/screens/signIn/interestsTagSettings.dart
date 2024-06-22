@@ -3,8 +3,8 @@ import 'package:homeless/screens/signIn/workInfoSettings.dart';
 
 import '../../model/tag.dart';
 import '../../theme/spacing.dart';
-import '../../view/Tag/GridTagView.dart';
-import '../../widgets/GenericScaffold.dart';
+import '../../view/tags/GridTagView.dart';
+import '../../widgets/genericScaffold.dart';
 
 class InterestsTagSettingsPage extends StatefulWidget {
   const InterestsTagSettingsPage({super.key});
@@ -41,9 +41,10 @@ class _InterestsTagSettingsPageState extends State<InterestsTagSettingsPage> {
         ),
         itemBuilder: (context, index) {
           return GridTagView(
-            loading: index / 3 == 0,
+            onClick: () {},
+            highlight: false,
             tagModel: const TagModel(
-                id: "",
+                id: 1,
                 name: "앙 기모찌 지원사업띠",
                 image:
                     "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/WebCrawlerArchitecture.svg/1200px-WebCrawlerArchitecture.svg.png"),

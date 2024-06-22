@@ -3,19 +3,25 @@ import 'dart:ffi';
 import 'json.dart';
 
 class CoOpModel {
+  final String uuid;
+  final DateTime createdAt;
   final String name;
   final String location;
-  final RealLocationModel? realLocation;
+  final double? lat;
+  final double? lng;
   final String? description;
   final String? phone;
   final String? baseUrl;
   final String? mainImage;
-  final List<String>? subImages;
+  final List<dynamic>? subImages;
 
   const CoOpModel({
+    required this.uuid,
+    required this.createdAt,
     required this.name,
     required this.location,
-    required this.realLocation,
+    required this.lat,
+    required this.lng,
     required this.description,
     required this.phone,
     required this.baseUrl,
@@ -25,9 +31,12 @@ class CoOpModel {
 
   factory CoOpModel.fromJson(JSON json) {
     return CoOpModel(
+      uuid: json['uuid'],
+      createdAt: DateTime.parse(json['createdAt']),
       name: json['name'],
       location: json['location'],
-      realLocation: json['realLocation'],
+      lat: json['lat'] == 0 ? 0.0 : json['lat'],
+      lng: json['lng'] == 0 ? 0.0 : json['lng'],
       description: json['description'],
       phone: json['phone'],
       baseUrl: json['baseUrl'],
@@ -35,38 +44,5 @@ class CoOpModel {
       subImages: json['subImages'],
     );
   }
-
-  Map<String, dynamic> toJson() {
-    return {
-      "name": "$name",
-      "location": "$location",
-      "realLocation": "$realLocation",
-      "description": "$description",
-      "phone": "$phone",
-      "baseUrl": "$baseUrl",
-      "mainImage": "$mainImage",
-      "subImages": "$subImages",
-    };
-  }
 }
 
-class RealLocationModel {
-  final Double? lat;
-  final Double? lng;
-
-  const RealLocationModel({required this.lat, required this.lng});
-
-  factory RealLocationModel.fromJson(JSON json) {
-    return RealLocationModel(
-      lat: json['lat'],
-      lng: json['lng'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      "lat": "$lat",
-      "lng": "$lng",
-    };
-  }
-}
